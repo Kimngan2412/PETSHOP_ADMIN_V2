@@ -20,7 +20,7 @@ import { ModalContext } from 'src/context/modal.context'
 import { SnackbarContext } from 'src/context/snackbar.context'
 import CategoryComponent from 'src/pages/components/category.component'
 import { AppDispatch, RootState } from 'src/store'
-import { DataParams, deleteCategories, fetchCategories, fetchAllCategories } from 'src/store/apps/categories'
+import { DataParams, deleteCategories, fetchAllCategories, fetchCategories } from 'src/store/apps/categories'
 import * as yup from 'yup'
 
 const schema = yup.object().shape({})

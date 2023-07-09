@@ -48,11 +48,6 @@ const navigation = (): VerticalNavItemsType => {
           icon: 'tabler:smart-home'
         },
 
-        // {
-        //   title: 'Product Category',
-        //   path: '/stores-managements/product-category',
-        //   icon: 'tabler:smart-home'
-        // },
         {
           title: 'Orders',
           path: '/stores-managements/orders',

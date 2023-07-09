@@ -11,7 +11,7 @@ import PsInput from "src/components/input";
 import { LoadingContext } from "src/context/loading.context";
 import { SnackbarContext } from "src/context/snackbar.context";
 import { AppDispatch } from "src/store";
-import { fetchData, fetchRole } from "src/store/apps/roles";
+import { fetchData } from "src/store/apps/roles";
 import { addEntity, updateEntity } from "src/store/apps/users";
 import * as yup from 'yup';
 

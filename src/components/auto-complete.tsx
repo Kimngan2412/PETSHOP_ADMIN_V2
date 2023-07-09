@@ -1,5 +1,5 @@
 import { Autocomplete, FormControl, FormHelperText, TextField } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { defaultOptonValue } from "src/common";
 
@@ -20,7 +20,7 @@ interface IProps {
 }
 
 export default function PsAutoComplete(props: IProps) {
-  const { options, value, size, label, errorMessage, controller } = props;
+  const { options, size, label, errorMessage, controller } = props;
 
   const [valueChange, setValueChange] = useState(defaultOptonValue)
   const [isController, setIsController] = useState(false)
@@ -96,7 +96,7 @@ const AutoCompleteController = ({
   options,
   rest
 }: any) => {
-  const { name, fullWidth = true } = controller;
+  const { name = true } = controller;
   const formContext = useFormContext();
   const [control, setControl] = useState()
   const [errors, setErrors] = useState<any>()

@@ -1,5 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Button, Grid } from "@mui/material";
+import * as _ from 'lodash';
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -9,9 +10,8 @@ import PsInput from "src/components/input";
 import { LoadingContext } from "src/context/loading.context";
 import { SnackbarContext } from "src/context/snackbar.context";
 import { AppDispatch } from "src/store";
-import * as yup from 'yup';
-import * as _ from 'lodash'
 import { addEntity, updateEntity } from "src/store/apps/categories";
+import * as yup from 'yup';
 
 const schema = yup.object().shape({
   categoriesName: yup.string().required('Category Name is required!'),

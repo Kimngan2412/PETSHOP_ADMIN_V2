@@ -6,6 +6,7 @@ export interface PsInputProps {
   size: 'small' | 'medium',
   label: string,
   value?: string | number,
+  // eslint-disable-next-line @typescript-eslint/ban-types
   onChange: Function
 }
 

@@ -3,12 +3,11 @@ import { Fragment, useEffect, useState } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
-import List from '@mui/material/List'
 import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
+import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
-import { useTheme } from '@mui/material/styles'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'

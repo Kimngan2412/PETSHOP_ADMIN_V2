@@ -13,7 +13,7 @@ import PsInput from 'src/components/input'
 import { LoadingContext } from 'src/context/loading.context'
 import { SnackbarContext } from 'src/context/snackbar.context'
 import { AppDispatch } from 'src/store'
-import { updateEntity, addEntity } from 'src/store/apps/orders'
+import { addEntity, updateEntity } from 'src/store/apps/orders'
 import * as yup from 'yup'
 
 const shippingOption = [

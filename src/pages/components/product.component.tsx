@@ -11,11 +11,11 @@ import { SnackbarContext } from "src/context/snackbar.context";
 import { AppDispatch } from "src/store";
 
 import * as _ from 'lodash';
+import PsAutoComplete from "src/components/auto-complete";
 import FileUploaderMultiple from "src/components/file-uploader/FileUploaderMultiple";
+import { fetchAllCategories } from 'src/store/apps/categories';
 import { addEntity, updateEntity } from "src/store/apps/products";
 import * as yup from 'yup';
-import { fetchAllCategories } from 'src/store/apps/categories'
-import PsAutoComplete from "src/components/auto-complete";
 
 const schema = yup.object().shape({
   productName: yup.string().required('Product Name is required!'),

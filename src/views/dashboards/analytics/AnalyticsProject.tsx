@@ -1,26 +1,25 @@
 // ** React Imports
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 // ** MUI Components
+import AvatarGroup from '@mui/material/AvatarGroup'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
-import { DataGrid } from '@mui/x-data-grid'
+import CardHeader from '@mui/material/CardHeader'
+import LinearProgress from '@mui/material/LinearProgress'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import AvatarGroup from '@mui/material/AvatarGroup'
-import LinearProgress from '@mui/material/LinearProgress'
+import { DataGrid } from '@mui/x-data-grid'
 
 // ** Third Party Imports
-import axios from 'axios'
 
 // ** Types Imports
 import { ThemeColor } from 'src/@core/layouts/types'
 import { ProjectTableRowType } from 'src/@fake-db/types'
 
 // ** Custom Components Imports
-import OptionsMenu from 'src/@core/components/option-menu'
 import CustomAvatar from 'src/@core/components/mui/avatar'
+import OptionsMenu from 'src/@core/components/option-menu'
 
 // ** Utils Import
 import { getInitials } from 'src/@core/utils/get-initials'

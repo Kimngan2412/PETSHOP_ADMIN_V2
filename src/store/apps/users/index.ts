@@ -13,11 +13,6 @@ export interface DataParams {
   limit: number
 }
 
-// interface TakeProxyNote {
-//   key: string
-//   note: string
-// }
-
 export const fetchData = createAsyncThunk('users/get', async (params: DataParams) => {
   const response: AxiosResponse<PaginationResponse<UserType>> = await axios.get('/users', {
     params
@@ -59,13 +54,6 @@ export const deleteUsers = createAsyncThunk('users/delete', async (id: number, {
     console.error(error)
   }
 })
-
-// export const addNote = createAsyncThunk('roles/add', async (data: TakeProxyNote, { dispatch }: Redux) => {
-//   const response = await axios.post('/proxy', data)
-//   dispatch(fetchData({ keyword: '', pageIndex: 0, pageSize: LIMIT_PAGE }))
-
-//   return response.data
-// })
 
 interface UserStore {
   data: UserType[] | undefined
