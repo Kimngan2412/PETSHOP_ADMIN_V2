@@ -47,7 +47,7 @@ export default function ProductComponent({ values, categories, onSubmit, onClose
   const { setLoading } = useContext(LoadingContext)
   const { openSnackbar } = useContext(SnackbarContext)
   const [productFiles, setProductFiles] = useState<File[]>([])
-  const [categoryState, setCategoryState] = useState<any>([])
+  const [, setCategoryState] = useState<any>([])
 
   const handleFormSubmit = (value: any) => {
     if (value) {
@@ -100,6 +100,7 @@ export default function ProductComponent({ values, categories, onSubmit, onClose
         })
 
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values])
 
   return (

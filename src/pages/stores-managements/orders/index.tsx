@@ -10,7 +10,7 @@ import { format } from 'date-fns'
 import { useContext, useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { DEFAULT_PAGE, SAVE_SUCCESS_MESSAGE, testOptions } from 'src/common'
+import { DEFAULT_PAGE, LIMIT_PAGE, SAVE_SUCCESS_MESSAGE, testOptions } from 'src/common'
 import PsAutoComplete from 'src/components/auto-complete'
 import PSDatagrid from 'src/components/data-grid'
 import { FormWrapper } from 'src/components/form-wrapper'
@@ -56,8 +56,20 @@ const OrderPage = () => {
   const { openModal, closeModal } = useContext(ModalContext)
   const { openSnackbar } = useContext(SnackbarContext)
   const { setLoading } = useContext(LoadingContext)
-  const [editData, setEditData] = useState<any>(null)
+  const [, setEditData] = useState<any>(null)
 
+
+  const getData = (filter?: any) => {
+    console.log(filter)
+    dispatch(
+      fetchAllOrder(!filter ? defaultFilter : filter)
+    )
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      .then(() => { })
+      .catch((error: AxiosError<any>) => {
+        console.error(error)
+      })
+  }
 
   const editRow = (id: number) => {
     console.log('id', id)
@@ -120,25 +132,33 @@ const OrderPage = () => {
       })
   }
 
+  const handlePageChange = (event: any) => {
+    console.log(event)
+    setPage(event + 1)
+    const { getValues } = methods;
+    const keyword = getValues('keyword')
+    const filter: DataParams = {
+      keyword: keyword,
+      status: null,
+      page: event + 1,
+      limit: LIMIT_PAGE
+    }
+
+    getData(filter)
+  }
+
+
 
 
   const handleFilterSubmit = (value: any) => {
     console.log(value)
   }
 
-  const getData = (filter?: any) => {
-    console.log(filter)
-    dispatch(
-      fetchAllOrder(!filter ? defaultFilter : filter)
-    )
-      .then((res: any) => { })
-      .catch((error: AxiosError<any>) => {
-        console.error(error)
-      })
-  }
+
 
   useEffect(() => {
     getData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch])
 
 
@@ -237,6 +257,7 @@ const OrderPage = () => {
         }
       }
     ]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -289,15 +310,15 @@ const OrderPage = () => {
         <Card>
           <PSDatagrid
             data={store.data}
-            total={10}
-            pageIndex={0}
+            total={store.total ?? 10}
+            pageIndex={!page ? 0 : page - 1}
             pageSize={10}
             columns={columns}
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
             onRowsSelectionHandler={() => { }}
-            handlePageChange={() => { }}
+            onPageChange={handlePageChange}
           />
         </Card>
-
       </Grid>
     </Grid>
   )

@@ -26,7 +26,7 @@ interface FileProp {
 const FileUploaderMultiple = ({ value, onChange }: any) => {
   // ** State
   const [files, setFiles] = useState<File[]>([])
-  const [defaultFiles, setDefaultFiles] = useState(value);
+  const [defaultFiles] = useState(value);
 
   useEffect(() => {
     const convertImageUrlToFile = async (files: any) => {

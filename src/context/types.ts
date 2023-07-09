@@ -1,6 +1,7 @@
 export type ErrCallbackType = (err: { [key: string]: string }) => void
 
 export type LoginParams = {
+  userName: string
   email: string
   password: string
   rememberMe?: boolean

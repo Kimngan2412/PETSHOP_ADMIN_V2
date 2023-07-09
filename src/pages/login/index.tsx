@@ -1,40 +1,35 @@
 // ** React Imports
-import { useState, ReactNode, MouseEvent } from 'react'
+import { ReactNode, useState } from 'react'
 
 // ** Next Imports
 import Link from 'next/link'
 
 // ** MUI Components
-import Alert from '@mui/material/Alert'
+import Box, { BoxProps } from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import Divider from '@mui/material/Divider'
-import Checkbox from '@mui/material/Checkbox'
+import FormControl from '@mui/material/FormControl'
+import FormHelperText from '@mui/material/FormHelperText'
+import IconButton from '@mui/material/IconButton'
+import InputAdornment from '@mui/material/InputAdornment'
+import InputLabel from '@mui/material/InputLabel'
+import OutlinedInput from '@mui/material/OutlinedInput'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import InputLabel from '@mui/material/InputLabel'
-import IconButton from '@mui/material/IconButton'
-import Box, { BoxProps } from '@mui/material/Box'
-import FormControl from '@mui/material/FormControl'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import OutlinedInput from '@mui/material/OutlinedInput'
 import { styled, useTheme } from '@mui/material/styles'
-import FormHelperText from '@mui/material/FormHelperText'
-import InputAdornment from '@mui/material/InputAdornment'
-import MuiFormControlLabel, { FormControlLabelProps } from '@mui/material/FormControlLabel'
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
 
 // ** Third Party Imports
-import * as yup from 'yup'
-import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { Controller, useForm } from 'react-hook-form'
+import * as yup from 'yup'
 
 // ** Hooks
-import { useAuth } from 'src/hooks/useAuth'
-import useBgColor from 'src/@core/hooks/useBgColor'
 import { useSettings } from 'src/@core/hooks/useSettings'
+import { useAuth } from 'src/hooks/useAuth'
 
 // ** Configs
 import themeConfig from 'src/configs/themeConfig'
@@ -78,12 +73,12 @@ const LinkStyled = styled(Link)(({ theme }) => ({
   color: theme.palette.primary.main
 }))
 
-const FormControlLabel = styled(MuiFormControlLabel)<FormControlLabelProps>(({ theme }) => ({
-  '& .MuiFormControlLabel-label': {
-    fontSize: '0.875rem',
-    color: theme.palette.text.secondary
-  }
-}))
+// const FormControlLabel = styled(MuiFormControlLabel)<FormControlLabelProps>(({ theme }) => ({
+//   '& .MuiFormControlLabel-label': {
+//     fontSize: '0.875rem',
+//     color: theme.palette.text.secondary
+//   }
+// }))
 
 const schema = yup.object().shape({
   userName: yup.string().min(5).required(),
@@ -101,13 +96,14 @@ interface FormData {
 }
 
 const LoginPage = () => {
-  const [rememberMe, setRememberMe] = useState<boolean>(true)
+  const [rememberMe] = useState<boolean>(true)
   const [showPassword, setShowPassword] = useState<boolean>(false)
 
   // ** Hooks
   const auth = useAuth()
   const theme = useTheme()
-  const bgColors = useBgColor()
+
+  // const bgColors = useBgColor()
   const { settings } = useSettings()
   const hidden = useMediaQuery(theme.breakpoints.down('md'))
 
@@ -127,8 +123,11 @@ const LoginPage = () => {
 
   const onSubmit = (data: FormData) => {
     const { userName, password } = data
-    auth.login({ userName, password, rememberMe }, () => {
-      setError('email', {
+    auth.login({
+      userName, password, rememberMe,
+      email: ''
+    }, () => {
+      setError('userName', {
         type: 'manual',
         message: 'Email or Password is invalid'
       })

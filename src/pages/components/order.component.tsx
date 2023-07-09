@@ -43,8 +43,7 @@ export default function OrdersComponent({ values, onSubmit, onClose }: any) {
     shipping: '',
     shippingStatus: ''
   }
-  console.log('defaultValues', defaultValues)
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [, setTotalPrice] = useState(0);
   const [shippingStatus, setShippingStatus] = useState({})
 
   const methods = useForm({
@@ -93,6 +92,7 @@ export default function OrdersComponent({ values, onSubmit, onClose }: any) {
     setShippingStatus(shippingOption?.find(x => x.value === shipping) ?? {});
     setTotalPrice(totalPrice)
     methods.setValue('totalPrice', totalPrice)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values])
 
 

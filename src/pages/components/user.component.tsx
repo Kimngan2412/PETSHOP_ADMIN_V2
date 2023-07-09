@@ -47,7 +47,7 @@ export default function UserComponent({ values, roles, onSubmit, onClose }: any)
   const dispatch = useDispatch<AppDispatch>()
   const { setLoading } = useContext(LoadingContext)
   const { openSnackbar } = useContext(SnackbarContext)
-  const [roleState, setRolesState] = useState<any>([])
+  const [, setRolesState] = useState<any>([])
   const [role, setRole] = useState<any>({})
   const handleFormSubmit = (value: any) => {
     if (value) {
@@ -96,6 +96,7 @@ export default function UserComponent({ values, roles, onSubmit, onClose }: any)
     }
 
     setRole(roles?.find((x: any) => x.value == values?.role?.id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values])
 
   return (

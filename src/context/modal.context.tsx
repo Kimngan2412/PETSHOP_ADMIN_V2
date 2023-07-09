@@ -1,6 +1,4 @@
-import { Dialog, DialogContent, DialogContentText, DialogTitle, Slide } from "@mui/material";
-import { TransitionProps } from "@mui/material/transitions";
-import React from "react";
+import { Dialog } from "@mui/material";
 import { createContext, useState } from "react";
 
 export const ModalContext = createContext<any>('');

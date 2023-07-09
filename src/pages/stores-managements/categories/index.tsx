@@ -51,7 +51,7 @@ const CategoriesPage = () => {
   const { openModal, closeModal } = useContext(ModalContext)
   const { openSnackbar } = useContext(SnackbarContext)
   const { setLoading } = useContext(LoadingContext)
-  const [editData, setEditData] = useState<any>(null)
+  const [, setEditData] = useState<any>(null)
 
 
   const getData = (filter?: any) => {
@@ -59,7 +59,7 @@ const CategoriesPage = () => {
     dispatch(
       fetchAllCategories(!filter ? defaultFilter : filter)
     )
-      .then((res: any) => { })
+      .then((res: any) => { console.log(res) })
       .catch((error: AxiosError<any>) => {
         console.error(error)
       })
@@ -229,9 +229,11 @@ const CategoriesPage = () => {
         }
       }
     ]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   useEffect(() => {
     getData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch])
 
   useEffect(() => {
@@ -289,6 +291,7 @@ const CategoriesPage = () => {
             pageIndex={!page ? 0 : page - 1}
             pageSize={10}
             columns={columns}
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
             onRowsSelectionHandler={() => { }}
             onPageChange={handlePageChange}
           />

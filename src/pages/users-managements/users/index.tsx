@@ -46,6 +46,7 @@ const UsersPage = () => {
   })
   const dispatch = useDispatch<AppDispatch>()
   const store = useSelector((state: RootState) => state.users)
+  console.log('store', store)
 
   const { setLoading } = useContext(LoadingContext)
   const { openDialog, closeDialog } = useContext(DialogContext)
@@ -54,8 +55,8 @@ const UsersPage = () => {
 
   const [page, setPage] = useState<number>(1)
 
-  const [editData, setEditData] = useState<any>(null)
-  const [users, setUsers] = useState<any>(null)
+  const [, setEditData] = useState<any>(null)
+  const [, setUsers] = useState<any>(null)
   const rolesStore = useSelector((state: RootState) => state.roles)
 
   const getData = (filter?: any) => {
@@ -291,16 +292,18 @@ const UsersPage = () => {
         }
       }
     ]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     getData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch])
 
 
   useEffect(() => {
     dispatch(fetchRoleData({ keyword: '' }))
-      .then((res: any) => {
+      .then(() => {
         // const rolesResult = res.payload?.items
         // setRoles(rolesResult?.map((role: any) => ({
         //   label: role.roleName,
@@ -362,6 +365,7 @@ const UsersPage = () => {
                 pageIndex={!page ? 0 : page - 1}
                 pageSize={10}
                 columns={columns}
+                // eslint-disable-next-line @typescript-eslint/no-empty-function
                 onRowsSelectionHandler={() => { }}
                 onPageChange={handlePageChange}
               />

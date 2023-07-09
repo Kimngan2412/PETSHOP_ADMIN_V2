@@ -54,9 +54,9 @@ const RolesPage = () => {
   const { openSnackbar } = useContext(SnackbarContext)
 
   const [page, setPage] = useState<number>(1)
-  const [roles, setRoles] = useState<RoleType[] | undefined>()
+  const [, setRoles] = useState<RoleType[] | undefined>()
 
-  const [editData, setEditData] = useState<any>(null)
+  const [, setEditData] = useState<any>(null)
 
   const getData = (filter?: any) => {
     setLoading(true)
@@ -256,10 +256,12 @@ const RolesPage = () => {
         }
       }
     ]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     getData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch])
 
   useEffect(() => {
@@ -329,6 +331,7 @@ const RolesPage = () => {
                 pageIndex={!page ? 0 : page - 1}
                 pageSize={10}
                 columns={columns}
+                // eslint-disable-next-line @typescript-eslint/no-empty-function
                 onRowsSelectionHandler={() => { }}
                 onPageChange={handlePageChange}
               />

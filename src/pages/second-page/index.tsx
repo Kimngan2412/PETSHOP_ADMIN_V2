@@ -7,12 +7,11 @@ import CardHeader from '@mui/material/CardHeader'
 import Grid from '@mui/material/Grid'
 import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { SAVE_SUCCESS_MESSAGE, testOptions } from 'src/common'
+import { testOptions } from 'src/common'
 import PsAutoComplete from 'src/components/auto-complete'
 import { FormWrapper } from 'src/components/form-wrapper'
 import PsInput from 'src/components/input'
 import { ModalContext } from 'src/context/modal.context'
-import { SnackbarContext } from 'src/context/snackbar.context'
 import * as yup from 'yup'
 import RoleComponent from '../components/role.component'
 
@@ -34,8 +33,8 @@ const SecondPage = () => {
 
 
   const {
-    control,
-    formState: { errors }
+    // control,
+    formState: { }
   } = useForm({
     defaultValues,
     mode: 'onChange',

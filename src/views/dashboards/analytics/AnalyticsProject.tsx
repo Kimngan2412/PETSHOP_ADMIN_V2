@@ -15,6 +15,7 @@ import { DataGrid } from '@mui/x-data-grid'
 
 // ** Types Imports
 import { ThemeColor } from 'src/@core/layouts/types'
+
 import { ProjectTableRowType } from 'src/@fake-db/types'
 
 // ** Custom Components Imports
