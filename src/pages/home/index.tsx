@@ -10,7 +10,7 @@ const Home = () => {
     <Grid container spacing={6}>
       <Grid item xs={12}>
         <Card>
-          <CardHeader title='Welcome To Pet Shop Admin 🚀'></CardHeader>
+          <CardHeader title='Welcome To Scooby Admin 🚀'></CardHeader>
           <CardContent>
             {/* <Typography sx={{ mb: 2 }}>All the best for your new project.</Typography> */}
             <Typography>

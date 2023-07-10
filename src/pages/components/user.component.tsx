@@ -150,7 +150,16 @@ export default function UserComponent({ values, roles, onSubmit, onClose }: any)
               name: 'email'
             }}
           />
-          {/* <Box sx={{ mb: 10 }}></Box>
+          <Box sx={{ mb: 10 }}></Box>
+          <PsInput
+            size={'small'}
+            label="Password"
+            controller={{
+              fullWidth: true,
+              name: 'password'
+            }}
+          />
+          <Box sx={{ mb: 10 }}></Box>
           <PsInput
             size={'small'}
             label="Description"
@@ -158,7 +167,7 @@ export default function UserComponent({ values, roles, onSubmit, onClose }: any)
               fullWidth: true,
               name: 'description'
             }}
-          /> */}
+          />
           <Box sx={{ mb: 10 }}></Box>
           <PsInput
             size={'small'}

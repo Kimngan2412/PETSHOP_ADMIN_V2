@@ -1,5 +1,5 @@
 // ** React Imports
-import { ReactNode, useState } from 'react'
+import { ReactNode, useContext, useState } from 'react'
 
 // ** Next Imports
 import Link from 'next/link'
@@ -38,6 +38,9 @@ import themeConfig from 'src/configs/themeConfig'
 import BlankLayout from 'src/@core/layouts/BlankLayout'
 
 // ** Demo Imports
+import { toast } from 'react-hot-toast'
+import { SAVE_SUCCESS_MESSAGE } from 'src/common'
+import { SnackbarContext } from 'src/context/snackbar.context'
 import FooterIllustrationsV2 from 'src/views/pages/auth/FooterIllustrationsV2'
 
 // ** Styled Components
@@ -86,8 +89,8 @@ const schema = yup.object().shape({
 })
 
 const defaultValues = {
-  password: 'Lahiemin234!',
-  userName: 'lam.nguyen'
+  password: '123456',
+  userName: 'admin123'
 }
 
 interface FormData {
@@ -120,19 +123,37 @@ const LoginPage = () => {
     mode: 'onBlur',
     resolver: yupResolver(schema)
   })
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { openSnackbar } = useContext(SnackbarContext);
 
   const onSubmit = (data: FormData) => {
-    const { userName, password } = data
+    const { userName, password } = data;
     auth.login({
-      userName, password, rememberMe,
+      userName,
+      password,
+      rememberMe,
       email: ''
-    }, () => {
+    }, (response: any) => {
+      console.log('response', response?.response);
+
+      if (response?.response) {
+        const { status, data } = response.response;
+
+        if (status === 200) {
+          openSnackbar(SAVE_SUCCESS_MESSAGE, 'Logged in successfully');
+        } else if (status === 401) {
+          const { messageCode } = data;
+          toast.error(messageCode)
+
+        }
+      } else {
+      }
       setError('userName', {
         type: 'manual',
-        message: 'Email or Password is invalid'
-      })
-    })
-  }
+        message: 'User Name or Password is invalid'
+      });
+    });
+  };
 
   const imageSource = skin === 'bordered' ? 'auth-v2-login-illustration-bordered' : 'auth-v2-login-illustration'
 

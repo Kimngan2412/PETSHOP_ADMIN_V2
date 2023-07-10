@@ -53,6 +53,7 @@ const UserDropdown = (props: Props) => {
   const router = useRouter()
   const { logout } = useAuth()
 
+
   // ** Vars
   const { direction } = settings
 
@@ -66,20 +67,22 @@ const UserDropdown = (props: Props) => {
     }
     setAnchorEl(null)
   }
+  const user = localStorage.getItem('userData')
+  console.log('user', user)
 
-  const styles = {
-    px: 4,
-    py: 1.75,
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    color: 'text.primary',
-    textDecoration: 'none',
-    '& svg': {
-      mr: 2.5,
-      color: 'text.primary'
-    }
-  }
+  // const styles = {
+  //   px: 4,
+  //   py: 1.75,
+  //   width: '100%',
+  //   display: 'flex',
+  //   alignItems: 'center',
+  //   color: 'text.primary',
+  //   textDecoration: 'none',
+  //   '& svg': {
+  //     mr: 2.5,
+  //     color: 'text.primary'
+  //   }
+  // }
 
   const handleLogout = () => {
     logout()
@@ -126,13 +129,13 @@ const UserDropdown = (props: Props) => {
               <Avatar alt='John Doe' src='/images/avatars/1.png' sx={{ width: '2.5rem', height: '2.5rem' }} />
             </Badge>
             <Box sx={{ display: 'flex', ml: 2.5, alignItems: 'flex-start', flexDirection: 'column' }}>
-              <Typography sx={{ fontWeight: 500 }}>John Doe</Typography>
+              <Typography sx={{ fontWeight: 500 }}>Admin Scooby</Typography>
               <Typography variant='body2'>Admin</Typography>
             </Box>
           </Box>
         </Box>
         <Divider sx={{ my: theme => `${theme.spacing(2)} !important` }} />
-        <MenuItemStyled sx={{ p: 0 }} onClick={() => handleDropdownClose()}>
+        {/* <MenuItemStyled sx={{ p: 0 }} onClick={() => handleDropdownClose()}>
           <Box sx={styles}>
             <Icon icon='tabler:user-check' />
             My Profile
@@ -168,7 +171,7 @@ const UserDropdown = (props: Props) => {
             <Icon icon='tabler:help' />
             FAQ
           </Box>
-        </MenuItemStyled>
+        </MenuItemStyled> */}
         <Divider sx={{ my: theme => `${theme.spacing(2)} !important` }} />
         <MenuItemStyled onClick={handleLogout} sx={{ py: 2, '& svg': { mr: 2, fontSize: '1.375rem' } }}>
           <Icon icon='tabler:logout' />
