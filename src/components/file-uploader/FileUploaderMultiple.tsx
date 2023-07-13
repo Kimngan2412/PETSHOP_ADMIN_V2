@@ -32,7 +32,7 @@ const FileUploaderMultiple = ({ value, onChange }: any) => {
     const convertImageUrlToFile = async (files: any) => {
       const newFiles = []
       for (const file of files) {
-        const imageUrl = `https://api.petshop.hieshop.click/${file?.url}`;
+        const imageUrl = `https://kimngan2412-petshop.onrender.com/${file?.url}`;
         try {
           const response = await axios.get(imageUrl, {
             responseType: 'blob', headers: {
@@ -109,7 +109,7 @@ const FileUploaderMultiple = ({ value, onChange }: any) => {
   return (
     <Fragment>
       {/* <div>
-        <img src="https://api.petshop.hieshop.click/uploads/images-1685593894816-792129722.jpg" alt="" />
+        <img src="https://kimngan2412-petshop.onrender.com/uploads/images-1685593894816-792129722.jpg" alt="" />
       </div> */}
       <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
